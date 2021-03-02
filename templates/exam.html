@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Exam Start </title>
+
+
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+     <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+     <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href=" {% static 'css/templatemo-digital-trend.css' %}">
+
+</head>
+<style>    
+    h1{ background-color: darkcyan;
+        text-align: center;
+        padding: 1%;
+    }
+    p{
+        color: darkgreen;
+        text-align: center;
+                
+    }
+    span{
+        color: black;
+        text-align: right;
+
+    }
+
+    .mainDiv{
+        display: flex;
+    }
+
+
+</style>
+<body>
+    <div>
+    <h1>Welcome to online Exam Portal</h1>
+    <h2 style="text-align: center;"> Online Practice Test</h2>
+    <p>Choose the correct option from given Questions</p>
+    <p>All Questions carry 10 Marks Each</p>
+    </div>
+    <h5>{{que.exam_name}}</h5>
+
+    {% for que in ques %} 
+        <div class="col-sm-12 mainDiv">
+            <h4 class="col-sm-10 questions" >Q:{{que.question}}</h4>
+            <span class="col-sm-2  marks">Marks :{{que.marks}}</span>
+        </div>
+     <form action="choice" method="post" >
+            <div>                        
+                <input type="radio" class="col-sm-1 op" id="r1" name="option" value="{{que.option1}}">a.) {{que.option1}} <br>
+                <input type="radio" class="col-sm-1 op" id="r2" name="option" value="{{que.option2}}">b.) {{que.option2}} <br>
+                <input type="radio" class="col-sm-1 op" id="r3" name="option" value="{{que.option3}}">c.) {{que.option3}} <br>
+                <input type="radio" class="col-sm-1 op" id="r4" name="option" value="{{que.option4}}">d.) {{que.option4}} <br>                
+            </div>
+     </form>
+    <br>
+    {% endfor %}
+
+    <button> <a href="result">View Answers</a>  
+    </button>
+    
+</body>
+</html>
